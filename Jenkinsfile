@@ -42,7 +42,7 @@ pipeline {
       stage('Test de vulnérabilités'){
          steps {
                 script {
-                    sh 'docker scout cves  image://$imagename:latest'
+                    sh 'docker scout quickview $imagename:latest'
                 }
             }
       }
