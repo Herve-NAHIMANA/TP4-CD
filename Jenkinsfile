@@ -47,6 +47,7 @@ pipeline {
       stage('Test de vulnérabilités'){
          steps {
                 script {
+                    sh 'docker scout repo enable --org hizzo hizzo/my-image-python'
                     sh 'docker scout quickview $imagename:latest'
                 }
             }
