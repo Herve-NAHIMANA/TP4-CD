@@ -4,7 +4,7 @@ pipeline {
         skipStagesAfterUnstable()
     }
     environment {
-          DOCKER_ACCOUNT = credentials('docker')
+          //DOCKER_ACCOUNT = credentials('docker')
           imagename = "hizzo/my-image-python"
         }
       stages {
