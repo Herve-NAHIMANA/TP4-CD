@@ -4,7 +4,7 @@ pipeline {
         skipStagesAfterUnstable()
     }
     environment {
-          //DOCKER_ACCOUNT = credentials('docker')
+          DOCKER_ACCOUNT = credentials('docker')
           imagename = "hizzo/my-image-python"
         }
       stages {
@@ -27,7 +27,7 @@ pipeline {
                 sh ' if [ ! -d "./app/reports" ]; then mkdir ./app/reports/; fi' */
            }
       }
-/*       stage('login'){
+/*    stage('login'){
         steps{
           sh 'echo $DOCKER_ACCOUNT_PSW | docker login -u $DOCKER_ACCOUNT_USR --password-stdin'
         }
@@ -38,6 +38,11 @@ pipeline {
                     sh 'docker pull $imagename:latest'
                 }
             }
+      }
+      stage('login'){
+        steps{
+          sh 'echo $DOCKER_ACCOUNT_PSW | docker login -u $DOCKER_ACCOUNT_USR --password-stdin'
+        }
       }
       stage('Test de vulnérabilités'){
          steps {
