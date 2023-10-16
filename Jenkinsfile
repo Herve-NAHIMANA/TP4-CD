@@ -7,6 +7,7 @@ pipeline {
           //DOCKER_ACCOUNT = credentials('docker')
           imagename = "hizzo/my-image-python"
         }
+      stages {
         stage('Prerequis') { // Compile and do unit testing
              steps {
                 sh 'apt install -y docker.io'
@@ -50,3 +51,4 @@ pipeline {
     sh 'docker logout'
   }
  } */
+}
