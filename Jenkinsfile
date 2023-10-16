@@ -10,6 +10,7 @@ pipeline {
       stages {
         stage('Prerequis') { // Compile and do unit testing
              steps {
+                sh 'apt update'
                 sh 'apt install -y docker.io'
                 /* sh 'cd ./app'
                 sh 'apt update'
