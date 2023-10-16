@@ -47,7 +47,9 @@ pipeline {
       stage('Test de vulnérabilités'){
          steps {
                 script {
-                    sh 'docker scout repo enable --org hizzo hizzo/my-image-python'
+                    //sh 'docker scout repo enable --org hizzo hizzo/my-image-python'
+                    sh 'curl -fsSL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh -o install-scout.sh'
+                    sh 'install-scout.sh'
                     sh 'docker scout quickview $imagename:latest'
                 }
             }
