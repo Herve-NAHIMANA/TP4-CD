@@ -1,0 +1,43 @@
+- name: setup Mysql with wordpress_db and remote login
+  become: yes
+  hosts: instance-db
+  vars_files: group_vars.yml  
+  tasks:
+    - name: Installing Mysql  and dependencies
+      package:
+       name: "{{item}}"
+       state: present
+       update_cache: yes
+      with_items:
+       - mariadb-server
+       - mariadb-client 
+       - python3-mysqldb
+    - name: start and enable mysql service
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+    - name: creating mysql user (wordpress)
+      mysql_user:
+        name: "{{db_user}}"
+        password: "{{db_pass}}"
+        priv: '*.*:ALL'
+        host: '%'
+        state: present
+    - name: creating wordpress_db
+      mysql_db:
+        name: "{{db_name}}"
+        state: present
+    - name: Enable remote login to mariadb
+      lineinfile:
+         path: /etc/mysql/mariadb.conf.d/50-server.cnf
+         regexp: '^bind-address'
+         line: 'bind-address = 0.0.0.0'
+         backup: yes
+      notify:
+         - Restart mariadb
+  handlers:
+    - name: Restart mariadb
+      service:
+        name: mariadb
+        state: restarted

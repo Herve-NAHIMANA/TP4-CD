@@ -1,0 +1,56 @@
+- name: Configure WordPress
+  hosts: instance-wordpress
+  become: true
+
+  tasks:
+    - name: Install Apache and PHP
+      apt:
+        name: 
+          - apache2
+          - php
+          - libapache2-mod-php
+          - php-mysqli
+        state: present
+
+    - name: Copy WordPress Files
+      get_url:
+        url: "https://wordpress.org/latest.tar.gz"
+        dest: /var/www/html/wordpress.tar.gz
+        owner: root
+        group: root
+        mode: '0644'
+      notify:
+        - Extract WordPress Files
+
+    - name: Configure Apache Virtual Host
+      template:
+        src: templates/wordpress.conf.j2
+        dest: /etc/apache2/sites-available/wordpress.conf
+        owner: root
+        group: root
+        mode: '0644'
+      notify:
+        - Enable WordPress Site
+    - name: remove default index.html
+      file:
+        path: /var/www/html/index.html
+        state: absent
+    - name: Désactiver le site par défaut
+      command: a2dissite 000-default.conf
+      notify:
+        - Redémarrer Apache
+  handlers:
+    - name: Extract WordPress Files
+      unarchive:
+        src: /var/www/html/wordpress.tar.gz
+        dest: /var/www/html/
+        owner: www-data
+        group: www-data
+        mode: '0755'
+        remote_src: yes
+    - name: Enable WordPress Site
+      command: a2ensite wordpress
+    - name: Redémarrer Apache
+      service:
+        name: apache2
+        state: restarted
