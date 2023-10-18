@@ -10,8 +10,8 @@ pipeline {
       stages {
         stage('Prerequis') { // Compile and do unit testing
              steps {
-                sh 'apt-get update'
-                sh 'apt-get install -y docker.io'
+                sh 'apt update'
+                sh 'apt install -y docker.io'
            }
       }
       stage('Pull Images'){
