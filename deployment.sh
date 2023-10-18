@@ -14,21 +14,21 @@ ZONE="us-east1-b"
     IFS=$'\n'
 # 1- Vérifier et installer Terraform si nécessaire
 if ! command -v terraform &> /dev/null; then
-    sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+     apt-get update &&  apt-get install -y gnupg software-properties-common
     wget -O- https://apt.releases.hashicorp.com/gpg | \
     gpg --dearmor | \
-    sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+     tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
     echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
     https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
-    sudo tee /etc/apt/sources.list.d/hashicorp.list
-    sudo apt update
-    sudo apt-get install terraform
+     tee /etc/apt/sources.list.d/hashicorp.list
+     apt update
+     apt-get install terraform
 fi
 
 # 2- Vérifier et installer Ansible si nécessaire
 if ! command -v ansible &> /dev/null; then
-    sudo apt update
-    sudo apt install -y ansible
+     apt update
+     apt install -y ansible
 fi
 
 gcloud services enable compute.googleapis.com --project=$PROJET
