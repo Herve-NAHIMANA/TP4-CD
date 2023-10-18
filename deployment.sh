@@ -70,7 +70,7 @@ echo "$USER:$VARIABLE_CONTENU" > ssh_keys
 ##############################################################################
 echo "Début d'envoi de la clé ssh sur tous les vms "
 # 5- Récupère la liste des noms et des zones d'instance à l'aide de gcloud
-instances_info=$(gcloud compute instances list --project $PROJET --format="csv(NAME,ZONE)")
+instances_info=$(/google-cloud-sdk/bin/gcloud compute instances list --project $PROJET --format="csv(NAME,ZONE)")
 echo $instances_info > '../ansible/nom_des_instances.txt'
 
 # 6- Vérifie si des instances sont trouvées
@@ -101,7 +101,7 @@ else
             echo "Traitement de l'instance : $instance_name (zone : $zone)"
 
             # Exécute la commande gcloud avec le nom d'instance et la zone actuels
-            gcloud compute instances add-metadata "$instance_name" --zone "$zone" --metadata-from-file ssh-keys=ssh_keys --project $PROJET
+            /google-cloud-sdk/bin/gcloud compute instances add-metadata "$instance_name" --zone "$zone" --metadata-from-file ssh-keys=ssh_keys --project $PROJET
 
             # Vérifie le code de sortie de la commande gcloud
             if [ $? -eq 0 ]; then
@@ -127,7 +127,7 @@ if grep -q "instance-db" nom_des_instances.txt; then
     ansible-playbook playbook_db.yml -i "./gcp_compute.yml"
 fi
 # 7- Vérification que l'application fonctionne
-wordpress_ip="$(gcloud compute instances describe instance-wordpress --project $PROJET --zone $ZONE --format='get(networkInterfaces[0].accessConfigs[0].natIP)')"
+wordpress_ip="$(/google-cloud-sdk/bin/gcloud compute instances describe instance-wordpress --project $PROJET --zone $ZONE --format='get(networkInterfaces[0].accessConfigs[0].natIP)')"
 echo $wordpress_ip
 status_code=$(curl -s -o /dev/null -w "%{http_code}" $wordpress_ip)
 if [ $status_code -eq 200 ] || [ $status_code -eq 302 ] || [ $status_code -eq 301 ]; then
