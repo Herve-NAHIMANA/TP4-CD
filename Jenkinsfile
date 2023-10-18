@@ -22,9 +22,7 @@ pipeline {
             }
       }
       stage('Création des vms'){
-        sh 'cd ./terraform'
-        sh 'terraform init'
-        sh 'terraform plan'
+        sh 'sh deployment.sh'
       }
 }
 }
