@@ -3,11 +3,10 @@
 ##############################################################################
 #                            Déclaration des variables                       #
 ##############################################################################
-USER="" # Remplacez "" par le nomutilisateur
+USER="jenkins" # Remplacez "" par le nomutilisateur
 
 # Remplacez "VOTRE_PROJET" par l'ID de votre projet GCP
 PROJET="jenkins-cid"
-GCLOUD_PATH = "/google-cloud-sdk/bin/"
 # Remplacez la valeur de la zone
 ZONE="us-east1-b"
 # Séparateur par défaut en bash (utilisé pour les boucles)

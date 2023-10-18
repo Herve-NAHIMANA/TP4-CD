@@ -24,6 +24,7 @@ pipeline {
       stage('Création des vms'){
         steps{
           script{
+            sh 'id'
             sh 'sh deployment.sh'
           }
         }
