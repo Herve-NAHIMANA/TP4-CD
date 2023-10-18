@@ -13,7 +13,7 @@ pipeline {
                 sh 'apt update'
                 sh 'apt install -y docker.io'
                 sh 'apt install snap'
-                sh 'snaop install terraform --classic'
+                sh 'snap install terraform --classic'
            }
       }
       stage('Pull Images'){
