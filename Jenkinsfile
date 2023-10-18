@@ -22,7 +22,11 @@ pipeline {
             }
       }
       stage('Création des vms'){
-        sh 'sh deployment.sh'
+        steps{
+          script{
+            sh 'sh deployment.sh'
+          }
+        }
       }
 }
 }
