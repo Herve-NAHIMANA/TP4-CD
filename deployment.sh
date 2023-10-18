@@ -31,9 +31,9 @@ if ! command -v ansible &> /dev/null; then
      apt install -y ansible
 fi
 
-gcloud services enable compute.googleapis.com --project=$PROJET
-gcloud services enable cloudresourcemanager.googleapis.com --project=$PROJET
-gcloud services enable iam.googleapis.com --project=$PROJET
+/google-cloud-sdk/bin/gcloud services enable compute.googleapis.com --project=$PROJET
+/google-cloud-sdk/bin/gcloud services enable cloudresourcemanager.googleapis.com --project=$PROJET
+/google-cloud-sdk/bin/gcloud services enable iam.googleapis.com --project=$PROJET
 # Vérification de la présence des fichiers Terraform et exécution de terraform init
 if [ ! -d "terraform" ]; then
     git clone https://github.com/Herve-NAHIMANA/TP4-CD.git
