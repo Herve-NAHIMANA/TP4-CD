@@ -24,11 +24,13 @@ pipeline {
       stage('Création des vms'){
         steps{
           script{
+            withCredentials([file(credentialsId: 'fa99b800-8b33-4947-b105-d032368ffb47', variable: 'GCP_CREDENTIALS')]) {
             sh 'cd terraform'
             sh 'terrafom init'
             sh 'terraform plan'
           }
         }
       }
+}
 }
 }
