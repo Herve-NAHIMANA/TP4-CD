@@ -24,8 +24,9 @@ pipeline {
       stage('Création des vms'){
         steps{
           script{
-            sh 'id'
-            sh 'sh deployment.sh'
+            sh 'cd terraform'
+            sh 'terrafom init'
+            sh 'terraform plan'
           }
         }
       }
