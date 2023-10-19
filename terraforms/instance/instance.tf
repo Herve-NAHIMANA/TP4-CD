@@ -18,5 +18,11 @@ resource "google_compute_instance" "computer_engine" {
       // Ephemeral public IP
     }
   }
+  metadata = {
+    startup-script = <<-EOF
+      sudo apt update
+      sudo apt install docker.io
+  EOF
+  }
 
 }
