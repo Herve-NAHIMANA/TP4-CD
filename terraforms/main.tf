@@ -33,12 +33,12 @@ module "firewall" {
   vpc_name = var.vpc_name
   depends_on = [module.vpc]
 }
-/* module "instance" {
-  source     = "./instance"
+module "instance" {
+  source = "./instance"
   instance_name = var.instance_name
   image_disk = var.image_disk
   machine_type = var.machine_type
   vpc_name = var.vpc_name
   subnet_name = var.subnet_name
   depends_on = [module.firewall]
-} */
+}
