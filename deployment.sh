@@ -80,7 +80,7 @@ else
     echo "+--------------------------------+------------------------------+"
     for instance_info in $instances_info; do
         # Découpe la ligne en nom et zone
-        IFS=',' read -r instance_name zone <<< "$instance_info"
+        IFS=',' read -r instance_name zone <<< "$(echo "$instance_info")"
 
         if [ "$instance_name" != "name" ] || [ "$zone" != "zone" ]; then        
             # Affiche les valeurs dans le tableau
@@ -91,7 +91,7 @@ else
     # Boucle pour traiter chaque nom d'instance et sa zone
     for instance_info in $instances_info; do
         # Découpe la ligne en nom et zone
-        IFS=',' read -r instance_name zone <<< "$instance_info"
+        IFS=',' read -r instance_name zone <<< "$(echo "$instance_info")"
 
         if [ "$instance_name" != "name" ] || [ "$zone" != "zone" ]; then      
             echo "Traitement de l'instance : $instance_name (zone : $zone)"
