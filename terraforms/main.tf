@@ -15,18 +15,18 @@ provider "google" {
   project = var.gcp_project
 }
 
-/* module "service_account"{
+module "service_account"{
   source = "./service_account"
   gcp_project = var.gcp_project
   key_type = var.key_type
   file_name = var.file_name
   account = var.account
-} */
+} 
 module "vpc" {
   source = "./vpc"
   vpc_name = var.vpc_name
   subnet_name = var.subnet_name
-  //depends_on = [module.service_account]
+  depends_on = [module.service_account]
 }
 module "firewall" {
   source = "./firewall"
