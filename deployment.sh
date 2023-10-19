@@ -68,3 +68,51 @@ echo "Début d'envoi de la clé ssh sur tous les vms "
 cd ..
 instances_info=$(./google-cloud-sdk/bin/gcloud compute instances list --format="csv(name,zone)" --zones=$ZONE)
 echo $instances_info > './ansible/nom_des_instances.txt'
+
+# 6- Vérifie si des instances sont trouvées
+if [ -z "$instances_info" ]; then
+    echo "Aucune instance trouvée dans le projet $PROJET."
+else
+    echo "Liste des noms et des zones d'instance dans le projet $PROJET :"
+# Affichage du tableau des instances
+    echo "+--------------------------------+------------------------------+"
+    printf "| %-30s |%-30s|\n" "Nom d'instance" "Zone"
+    echo "+--------------------------------+------------------------------+"
+    for instance_info in $instances_info; do
+        # Découpe la ligne en nom et zone
+        IFS=',' read -r instance_name zone <<< "$(echo "$instance_info")"
+
+        if [ "$instance_name" != "name" ] || [ "$zone" != "zone" ]; then        
+            # Affiche les valeurs dans le tableau
+            printf "| %-30s |%-30s|\n" "$instance_name" "$zone"
+        fi
+    done
+    echo "+--------------------------------+------------------------------+"
+    # Boucle pour traiter chaque nom d'instance et sa zone
+    for instance_info in $instances_info; do
+        # Découpe la ligne en nom et zone
+        IFS=',' read -r instance_name zone <<< "$(echo "$instance_info")"
+
+        if [ "$instance_name" != "name" ] || [ "$zone" != "zone" ]; then      
+            echo "Traitement de l'instance : $instance_name (zone : $zone)"
+
+            # Exécute la commande gcloud avec le nom d'instance et la zone actuels
+            ./google-cloud-sdk/bin/gcloud compute instances add-metadata "$instance_name" --zone "$zone" --metadata-from-file ssh-keys=./terraforms/ssh_keys --project $PROJET
+
+            # Vérifie le code de sortie de la commande gcloud
+            if [ $? -eq 0 ]; then
+                echo "Clé SSH ajoutée à l'instance $instance_name (zone : $zone) avec succès."
+            else
+                echo "Une erreur s'est produite lors de l'ajout de la clé SSH à l'instance $instance_name (zone : $zone)."
+            fi
+        fi
+    done   
+fi
+##############################################################################
+#                       Fin de d'envoi de la clé                             #
+##############################################################################
+##############################################################################
+#                       Lancement des playbooks                              #
+##############################################################################
+cd ansible
+ansible-playbook playbook_wordpress.yml -i "./gcp_compute.yml"
