@@ -23,7 +23,9 @@ fi
 # 2- Vérifier et installer Ansible si nécessaire
 if ! command -v ansible &> /dev/null; then
      apt update
-     apt install -y ansible
+     apt install python3-pip
+     apt install ansible
+     pip3 install google-auth
 fi
 ./google-cloud-sdk/bin/gcloud services enable compute.googleapis.com --project=$PROJET
 ./google-cloud-sdk/bin/gcloud services enable cloudresourcemanager.googleapis.com --project=$PROJET
