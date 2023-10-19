@@ -33,7 +33,7 @@ module "firewall" {
   vpc_name = var.vpc_name
   depends_on = [module.vpc]
 }
-module "instances" {
+module "instance" {
   source     = "./instance"
   instance_name = var.instance_name
   image_disk = var.image_disk
