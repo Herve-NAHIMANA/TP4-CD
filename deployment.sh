@@ -115,4 +115,4 @@ fi
 #                       Lancement des playbooks                              #
 ##############################################################################
 cd ansible
-ansible-playbook playbook_docker.yml -i "./gcp_compute.yml"
+ansible-playbook playbook_docker.yml -i "gcp_compute.yaml"
