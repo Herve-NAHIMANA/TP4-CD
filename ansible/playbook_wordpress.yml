@@ -1,5 +1,5 @@
 - name: Configure WordPress
-  hosts: instance-wordpress
+  hosts: instance-python-vm
   become: true
 
   tasks:
