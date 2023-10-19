@@ -18,14 +18,4 @@ resource "google_compute_instance" "computer_engine" {
       // Ephemeral public IP
     }
   }
-  provisioner "file" {
-    source      = "./script"
-    destination = "/tmp/script"
-  }
-    provisioner "remote-exec" {
-    inline = [
-      "chmod +x /tmp/script",
-      "sudo /tmp/script",
-    ]
-  }
 }
