@@ -3,7 +3,7 @@
 ##############################################################################
 #                            Déclaration des variables                       #
 ##############################################################################
-USER="ange_igiraneza2000_gmail_com" # Remplacez "" par le nomutilisateur
+USER="root" # Remplacez "" par le nomutilisateur
 # Remplacez "VOTRE_PROJET" par l'ID de votre projet GCP
 PROJET="jenkins-cid"
 # Remplacez la valeur de la zone
