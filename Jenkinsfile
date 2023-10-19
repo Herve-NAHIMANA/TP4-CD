@@ -28,12 +28,11 @@ pipeline {
             sh 'cd terraform'
             sh 'terrafom init'
             sh 'terraform plan'
-          }
-        }
-      } */
-      script{
+          }*/
+          script{
         sh 'sh ./deployment.sh'
       }
-}
+        }
+      } 
 }
 }
