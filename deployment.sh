@@ -31,11 +31,11 @@ fi
 # /google-cloud-sdk/bin/gcloud services enable cloudresourcemanager.googleapis.com --project=$PROJET
 # /google-cloud-sdk/bin/gcloud services enable iam.googleapis.com --project=$PROJET
 # Vérification de la présence des fichiers Terraform et exécution de terraform init
-if [ ! -d "terraform" ]; then
+if [ ! -d "terraforms" ]; then
     git clone https://github.com/Herve-NAHIMANA/TP4-CD.git
-    cd TP4-CD/terraform
+    cd TP4-CD/terraforms
 else
-    cd terraform
+    cd terraforms
 fi
 terraform init
 
