@@ -16,7 +16,7 @@ provider "google" {
 }
 
 module "service_account"{
-  source = "service_account"
+  source = "./service_account"
   gcp_project = var.gcp_project
   key_type = var.key_type
   file_name = var.file_name
@@ -29,12 +29,12 @@ module "vpc" {
   depends_on = [module.service_account]
 }
 module "firewall" {
-  source = "firewall"
+  source = "./firewall"
   vpc_name = var.vpc_name
   depends_on = [module.vpc]
 }
 module "instances" {
-  source     = "instance"
+  source     = "./instance"
   instance_name = var.instance_name
   image_disk = var.image_disk
   machine_type = var.machine_type
