@@ -30,8 +30,8 @@ pipeline {
             sh 'terraform plan'
           }*/
           script{
-        sh 'sh ./deployment.sh'
-      }
+            sh 'sh ./deployment.sh'
+          }
         }
       } 
 }
