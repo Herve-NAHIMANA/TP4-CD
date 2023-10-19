@@ -3,8 +3,7 @@
 ##############################################################################
 #                            Déclaration des variables                       #
 ##############################################################################
-USER="jenkins" # Remplacez "" par le nomutilisateur
-google_path = ../google-cloud-sdk/bin/
+USER="root" # Remplacez "" par le nomutilisateur
 # Remplacez "VOTRE_PROJET" par l'ID de votre projet GCP
 PROJET="jenkins-cid"
 # Remplacez la valeur de la zone
