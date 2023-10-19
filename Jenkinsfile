@@ -30,9 +30,7 @@ pipeline {
             sh 'terraform plan'
           }*/
           script{
-            withCredentials(jenkins-cid) {
               sh 'sh ./deployment.sh'
-            }
           }
         }
       } 
