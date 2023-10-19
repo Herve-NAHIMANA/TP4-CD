@@ -66,7 +66,7 @@ echo "$USER:$VARIABLE_CONTENU" > ssh_keys
 echo "Début d'envoi de la clé ssh sur tous les vms "
 # 5- Récupère la liste des noms et des zones d'instance à l'aide de gcloud
 cd ..
-instances_info=$(./google-cloud-sdk/bin/gcloud compute instances list --project $PROJET --filter="name=('NAME')" --zone=$ZONE)
+instances_info=$(./google-cloud-sdk/bin/gcloud compute instances list --project $PROJET --filter="name=('NAME')" --zones=$ZONE)
 echo $instances_info > './ansible/nom_des_instances.txt'
 
 # 6- Vérifie si des instances sont trouvées
