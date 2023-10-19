@@ -18,11 +18,14 @@ resource "google_compute_instance" "computer_engine" {
       // Ephemeral public IP
     }
   }
-  metadata = {
-    startup-script = <<-EOF
-      sudo apt update
-      sudo apt install docker.io
-  EOF
+  provisioner "file" {
+    source      = "./script"
+    destination = "/tmp/script"
   }
-
+    provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/script",
+      "sudo /tmp/script",
+    ]
+  }
 }
