@@ -15,8 +15,8 @@ ZONE="us-east1-b"
 if ! command -v terraform &> /dev/null; then
     apt-get update
     apt install unzip
-    terraform_url=$(curl -s https://releases.hashicorp.com/terraform/ | grep -o 'https://releases.hashicorp.com/terraform/[0-9.]\+/terraform_[0-9.]\+_linux_amd64.zip' | head -n 1)
-    curl -o terraform.zip $terraform_url
+   # terraform_url=$(curl -s https://releases.hashicorp.com/terraform/ | grep -o 'https://releases.hashicorp.com/terraform/[0-9.]\+/terraform_[0-9.]\+_linux_amd64.zip' | head -n 1)
+    curl -o terraform.zip https://releases.hashicorp.com/terraform/1.6.2/terraform_1.6.2_linux_amd64.zip #à change à fonction de la version
     unzip terraform.zip
     mv terraform /usr/local/bin/
 fi
