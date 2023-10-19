@@ -30,7 +30,9 @@ pipeline {
             sh 'terraform plan'
           }*/
           script{
-            sh 'sh ./deployment.sh'
+            withCredentials([file(credentialsId: 'fa99b800-8b33-4947-b105-d032368ffb47', variable: 'GCP_CREDENTIALS')]) {
+              sh 'sh ./deployment.sh'
+            }
           }
         }
       } 
