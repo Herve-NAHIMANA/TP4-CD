@@ -26,10 +26,14 @@ if ! command -v ansible &> /dev/null; then
      apt update
      apt install -y ansible
 fi
-
-# /google-cloud-sdk/bin/gcloud services enable compute.googleapis.com --project=$PROJET
-# /google-cloud-sdk/bin/gcloud services enable cloudresourcemanager.googleapis.com --project=$PROJET
-# /google-cloud-sdk/bin/gcloud services enable iam.googleapis.com --project=$PROJET
+if ! command  -v /google-cloud-sdk/bin/gcloud &> /dev/null; then
+    curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-451.0.0-linux-x86.tar.gz
+    tar -xf google-cloud-cli-451.0.0-linux-x86.tar.gz
+fi
+/google-cloud-sdk/bin/gcloud init --console-only
+/google-cloud-sdk/bin/gcloud services enable compute.googleapis.com --project=$PROJET
+/google-cloud-sdk/bin/gcloud services enable cloudresourcemanager.googleapis.com --project=$PROJET
+/google-cloud-sdk/bin/gcloud services enable iam.googleapis.com --project=$PROJET
 # Vérification de la présence des fichiers Terraform et exécution de terraform init
 if [ ! -d "terraforms" ]; then
     git clone https://github.com/Herve-NAHIMANA/TP4-CD.git
