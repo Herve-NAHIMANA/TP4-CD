@@ -4,7 +4,7 @@
 #                            Déclaration des variables                       #
 ##############################################################################
 USER="jenkins" # Remplacez "" par le nomutilisateur
-
+google_path = ../google-cloud-sdk/bin/
 # Remplacez "VOTRE_PROJET" par l'ID de votre projet GCP
 PROJET="jenkins-cid"
 # Remplacez la valeur de la zone
@@ -66,7 +66,7 @@ echo "$USER:$VARIABLE_CONTENU" > ssh_keys
 ##############################################################################
 echo "Début d'envoi de la clé ssh sur tous les vms "
 # 5- Récupère la liste des noms et des zones d'instance à l'aide de gcloud
-instances_info=$(../google-cloud-sdk/bin/gcloud compute instances list --project $PROJET --format="csv(NAME,ZONE)")
+instances_info=$(google_path/gcloud compute instances list --project $PROJET --format="csv(NAME,ZONE)")
 echo $instances_info > '../ansible/nom_des_instances.txt'
 
 # 6- Vérifie si des instances sont trouvées
