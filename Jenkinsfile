@@ -34,7 +34,7 @@ pipeline {
           script{
               sh 'if [ ! command  -v ./google-cloud-sdk/bin/gcloud &> /dev/null]; then curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-451.0.0-linux-x86.tar.gz;fi'
               sh 'if [ -d  "./google-cloud-cli-451.0.0-linux-x86.tar.gz"]; then tar -xf google-cloud-cli-451.0.0-linux-x86.tar.gz; fi'
-              sh './google-cloud-sdk/bin/gcloud auth login --cred-file=cred.json'
+              //sh './google-cloud-sdk/bin/gcloud auth login --cred-file=cred.json'
               sh 'sh ./deployment.sh'
           }
         }
