@@ -45,7 +45,7 @@ variable "machine_type" {
 # Variables pour le service account à remplacer si nécessaire
 variable "account" {
   type        = string
-  default     = "jenkins-test"
+  default     = "jenkins-prod"
 }
 variable "key_type" {
   type        = string
