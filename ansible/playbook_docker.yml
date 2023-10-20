@@ -1,5 +1,5 @@
 - name: Configure docker
-  hosts: instance-python-vm
+  hosts: instance-test-vm
   become: true
   tasks:
     - name: Install docker
