@@ -5,7 +5,7 @@ variable "gcp_project" {
 }
 variable "gcp_zone" {
   type        = string
-  default     = "us-east1-b"
+  default     = "us-east1-a"
   description = "The GCP zone to deploy the runner into."
 }
 
@@ -30,7 +30,7 @@ variable "subnet_name" {
 
 variable "instance_name" {
   type = string
-  default = "python-vm"
+  default = "test-vm"
 }
 variable "image_disk" {
   type        = string
