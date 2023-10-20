@@ -8,4 +8,4 @@
           - docker.io
         state: present
     - name: lance le docker run
-      shell: docker run -p 80:5000 hizzo/my-image-python
+      shell: docker run -p 80:5000 hizzo/my-image-python -d
