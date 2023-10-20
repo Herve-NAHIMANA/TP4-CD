@@ -3,10 +3,9 @@ resource "google_container_cluster" "private" {
 
   name                     = "private"
   location                 = var.gcp_region
-
+  project = var.gcp_project
   network                  = var.vpc_name
   subnetwork               = var.subnet_name
-
   private_cluster_config {
     enable_private_endpoint = false
     enable_private_nodes    = true

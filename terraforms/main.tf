@@ -47,5 +47,6 @@ module "kubernetes" {
   vpc_name = var.vpc_name
   subnet_name = var.subnet_name
   gcp_region = var.gcp_region
+  gcp_project = var.gcp_project
   depends_on = [ module.firewall ]
 }
