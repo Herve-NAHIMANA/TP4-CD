@@ -99,7 +99,7 @@ else
             echo "Traitement de l'instance : $instance_name (zone : $zone)"
 
             # Exécute la commande gcloud avec le nom d'instance et la zone actuels
-            ./google-cloud-sdk/bin/gcloud compute instances add-metadata "$instance_name" --zone "$zone" --metadata-from-file ssh-keys=./terraforms/ssh_keys --project $PROJET
+            ./google-cloud-sdk/bin/gcloud compute instances add-metadata "$instance_name" --zone "$zone" --metadata-from-file ssh-keys=terraforms/ssh_keys --project $PROJET
 
             # Vérifie le code de sortie de la commande gcloud
             if [ $? -eq 0 ]; then
@@ -117,5 +117,4 @@ fi
 #                       Lancement des playbooks                              #
 ##############################################################################
 cd ansible
-id
 ansible-playbook playbook_docker.yml -i "gcp_compute.yaml"
