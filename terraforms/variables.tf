@@ -45,7 +45,7 @@ variable "machine_type" {
 # Variables pour le service account à remplacer si nécessaire
 variable "account" {
   type        = string
-  default     = "terraform"
+  default     = "test"
 }
 variable "key_type" {
   type        = string
