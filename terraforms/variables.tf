@@ -17,12 +17,12 @@ variable "gcp_region" {
 # Variables pour le VPC à remplacer si nécessaire
 variable "vpc_name" {
   type        = string
-  default     = "test-network"
+  default     = "prod-network"
   description = "Le réseau vpc"
 }
 variable "subnet_name" {
   type        = string
-  default     = "test-subnetwork"
+  default     = "prod-subnetwork"
   description = "Le sous-réseau vpc"
 }
 

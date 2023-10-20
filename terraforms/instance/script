@@ -1,3 +1,0 @@
-apt update
-apt install docker.io
-docker run -p 80:5000 hizzo/my-image-python

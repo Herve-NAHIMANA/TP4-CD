@@ -33,7 +33,7 @@ module "firewall" {
   vpc_name = var.vpc_name
   depends_on = [module.vpc]
 }
-module "instance" {
+/* module "instance" {
   source = "./instance"
   instance_name = var.instance_name
   image_disk = var.image_disk
@@ -41,4 +41,10 @@ module "instance" {
   vpc_name = var.vpc_name
   subnet_name = var.subnet_name
   depends_on = [module.firewall]
+} */
+module "kubernetes" {
+  source = "./kubernetes"
+  vpc_name = var.vpc_name
+  subnet_name = var.subnet_name
+  depends_on = [ module.firewall ]
 }

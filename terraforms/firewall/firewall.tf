@@ -1,5 +1,5 @@
 resource "google_compute_firewall" "default" {
-  name    = "test-python"
+  name    = "prod-python"
   network = var.vpc_name
   allow {
     protocol = "tcp"
