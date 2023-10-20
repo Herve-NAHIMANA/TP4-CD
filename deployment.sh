@@ -3,7 +3,7 @@
 ##############################################################################
 #                            Déclaration des variables                       #
 ##############################################################################
-USER="" # Remplacez "" par le nomutilisateur
+USER="ange.igiraneza2000@gmail.com" # Remplacez "" par le nomutilisateur
 # Remplacez "VOTRE_PROJET" par l'ID de votre projet GCP
 PROJET="jenkins-cid"
 # Remplacez la valeur de la zone
@@ -46,9 +46,11 @@ terraform apply -auto-approve
 #                         Début création de la clé ssh                        #
 ##############################################################################
 # 4- Vérifier si une clé SSH est présente sur la VM, sinon en créer une
-if [ ! -f ~/.ssh/id_rsa ]; then
-    ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa -C "$USER"
+if [ -f ~/.ssh/id_rsa ]; then
+    rm ~/.ssh/id_rsa
+    rm ~/.ssh/id_rsa.pub
 fi
+ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa -C "$USER"
 
 # Lire le contenu du fichier dans une variable
 contenu=$(cat ~/.ssh/id_rsa.pub)
