@@ -1,6 +1,6 @@
 plugin: gcp_compute
 zones: # populate inventory with instances in these regions
-  - us-east1-b
+  - us-east1-d
 projects:
   - jenkins-cid
 service_account_file: ./service_account.json # à changer si vous avez modifié la variable file_name dans terraform

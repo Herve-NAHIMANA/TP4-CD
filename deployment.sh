@@ -7,7 +7,7 @@ USER="ange.igiraneza2000@gmail.com" # Remplacez "" par le nomutilisateur
 # Remplacez "VOTRE_PROJET" par l'ID de votre projet GCP
 PROJET="jenkins-cid"
 # Remplacez la valeur de la zone
-ZONE="us-east1-a"
+ZONE="us-east1-d"
 # Séparateur par défaut en bash (utilisé pour les boucles)
     IFS=$'\n'
 # 1- Vérifier et installer Terraform si nécessaire
