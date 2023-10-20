@@ -17,12 +17,12 @@ variable "gcp_region" {
 # Variables pour le VPC à remplacer si nécessaire
 variable "vpc_name" {
   type        = string
-  default     = "test-network"
+  default     = "dev-network"
   description = "Le réseau vpc"
 }
 variable "subnet_name" {
   type        = string
-  default     = "test-subnetwork"
+  default     = "dev-subnetwork"
   description = "Le sous-réseau vpc"
 }
 
@@ -30,7 +30,7 @@ variable "subnet_name" {
 
 variable "instance_name" {
   type = string
-  default = "python-vm"
+  default = "dev-vm"
 }
 variable "image_disk" {
   type        = string
@@ -45,7 +45,7 @@ variable "machine_type" {
 # Variables pour le service account à remplacer si nécessaire
 variable "account" {
   type        = string
-  default     = "terraform"
+  default     = "jenkins-dev"
 }
 variable "key_type" {
   type        = string
