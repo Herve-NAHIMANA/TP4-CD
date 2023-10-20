@@ -1,6 +1,7 @@
 - name: Configure docker
   hosts: instance-python-vm
   become: false
+  ansible_user: "ange.igiraneza2000@gmail.com"
   tasks:
     - name: Install docker
       apt:
