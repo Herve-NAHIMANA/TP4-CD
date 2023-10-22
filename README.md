@@ -93,4 +93,4 @@ Les étapes du pipeline sont décritées dans le Jenkinsfile qui est disponible 
 ![](imgs/stageview.PNG)
 
 >[!WARNING]
-Il faut se connecter manuellement dans le container jenkins, et lance la commande `gcloud auth application-default login ` pour autorise jenkins à accèder sur google cloud.
+Il faut se connecter manuellement dans le container jenkins et lance la commande `gcloud auth application-default login ` pour donner à jenkins l'accès sur google cloud.
