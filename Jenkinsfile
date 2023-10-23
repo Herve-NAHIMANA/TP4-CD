@@ -8,7 +8,7 @@ pipeline {
           imagename = "hizzo/my-image-python"
           gcloud_path = "./google-cloud-sdk/bin/"
           GCP_CREDENTIALS = 'gcp'
-          DOCKER_HUB_PAT = "https://hub.docker.com/"
+          DOCKER_HUB_PAT = "dckr_pat_qzanP1nRbn_woplOddQA04Dsiec"
         }
       stages {
         stage('Prerequis') { // Compile and do unit testing
