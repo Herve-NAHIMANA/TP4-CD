@@ -8,6 +8,7 @@ pipeline {
           imagename = "hizzo/my-image-python"
           gcloud_path = "./google-cloud-sdk/bin/"
           GCP_CREDENTIALS = 'gcp'
+          DOCKER_HUB_PAT = "https://hub.docker.com/"
         }
       stages {
         stage('Prerequis') { // Compile and do unit testing
@@ -29,7 +30,7 @@ pipeline {
               sh 'curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s -- -b /usr/local/bin'
               
               // Log into Docker Hub
-              sh 'echo $DOCKER_ACCOUNT_PASSWORD | docker login -u $DOCKER_ACCOUNT_USER --password-stdin'
+              sh 'echo $DOCKER_HUB_PAT | docker login -u $DOCKER_ACCOUNT_USER --password-stdin'
 
               // Analyze and fail on critical or high vulnerabilities
               sh 'docker-scout cves $imagename --exit-code --only-severity critical,high'
