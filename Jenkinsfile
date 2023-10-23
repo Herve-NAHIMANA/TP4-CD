@@ -23,7 +23,6 @@ pipeline {
                 }
             }
       }
-      …
       stage('Analyze image') {
           steps {
               // Install Docker Scout
