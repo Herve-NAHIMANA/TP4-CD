@@ -5,13 +5,13 @@ variable "gcp_project" {
 }
 variable "gcp_zone" {
   type        = string
-  default     = "us-east1-d"
+  default     = "europe-west9-a"
   description = "The GCP zone to deploy the runner into."
 }
 
 variable "gcp_region" {
   type        = string
-  default     = "us-east1"
+  default     = "europe-west9"
   description = "The GCP region to deploy the runner into."
 }
 # Variables pour le VPC à remplacer si nécessaire
