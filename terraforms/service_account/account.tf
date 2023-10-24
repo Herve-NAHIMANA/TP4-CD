@@ -12,7 +12,7 @@ resource "local_file" "service_account" {
 }
 resource "google_project_iam_binding" "project" {
   project = var.gcp_project
-  role    = "roles/viewer"
+  role    = "roles/container.developer"
 
   members = [
     "serviceAccount:${google_service_account.service_account.email}",
