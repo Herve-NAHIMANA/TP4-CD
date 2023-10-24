@@ -8,6 +8,10 @@ pipeline {
           imagename = "hizzo/my-image-python"
           gcloud_path = "./google-cloud-sdk/bin/"
           GCP_CREDENTIALS = 'gcp'
+          CLUSTER_NAME = 'jenkins-cluster'
+          LOCATION = 'europe-west1-c'
+          CREDENTIALS_ID = '7f60009d-27b9-405d-8e78-db4d9b093835'
+          PROJECT_ID = "jenkins-cid"
         }
       stages {
         stage('Prerequis') { // Compile and do unit testing
@@ -23,20 +27,14 @@ pipeline {
                 }
             }
       }
-      stage('Création des vms'){
+      stage('Deploiement Kubernetes'){
         steps{
-          /* script{
-            withCredentials([file(credentialsId: 'fa99b800-8b33-4947-b105-d032368ffb47', variable: 'GCP_CREDENTIALS')]) {
-            sh 'cd terraform'
-            sh 'terrafom init'
-            sh 'terraform plan'
-          }*/
           script{
               sh 'if [ ! command  -v ./google-cloud-sdk/bin/gcloud &> /dev/null]; then curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-451.0.0-linux-x86.tar.gz;fi'
               sh 'tar -xf google-cloud-cli-451.0.0-linux-x86.tar.gz;'
-              //sh './google-cloud-sdk/bin/gcloud auth login --cred-file=cred.json'
-              sh 'bash ./deployment.sh'
           }
+          step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'terraforms/kubernetes/python-app-deployment.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+				  echo "Start deployment of deployment.yaml"
         }
       } 
 }

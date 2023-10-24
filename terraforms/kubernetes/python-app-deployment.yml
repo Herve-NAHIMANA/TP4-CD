@@ -2,8 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: python-app
+  labels:
+    app: myapp
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: python-app
@@ -17,3 +19,16 @@ spec:
         image: hizzo/my-image-python:latest  # Remplacez par l'image Docker de votre application Python
         ports:
         - containerPort: 80  # Port sur lequel votre application écoute
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: python-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
