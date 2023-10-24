@@ -36,7 +36,8 @@ pipeline {
           sh 'pwd'
           echo "Start deployment of deployment.yaml"
           step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './terraforms/kubernetes/python-app-deployment.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
-          def clusterInfo = googleKubernetesEngine(
+          step{
+            def clusterInfo = googleKubernetesEngine(
               projectId: env.PROJECT_ID,
               credentialsId: env.CREDENTIALS_ID,
               location: env.LOCATION,
@@ -45,6 +46,7 @@ pipeline {
 
           def clusterIp = clusterInfo.endpoint
           echo "Adresse IP du cluster Kubernetes : $clusterIp"
+          }
         }
       } 
 }
