@@ -1,7 +1,0 @@
-version: '3'
-
-services:
-  python:
-    image: hizzo/my-image-python:latest
-    ports:
-      - "80:5000"

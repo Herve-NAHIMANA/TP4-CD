@@ -9,7 +9,7 @@ pipeline {
           gcloud_path = "./google-cloud-sdk/bin/"
           GCP_CREDENTIALS = 'gcp'
           CLUSTER_NAME = 'jenkins-cluster'
-          LOCATION = 'europe-west1'
+          LOCATION = 'europe-west9'
           CREDENTIALS_ID = '7f60009d-27b9-405d-8e78-db4d9b093835'
           PROJECT_ID = "jenkins-cid"
         }
@@ -34,7 +34,7 @@ pipeline {
               sh 'tar -xf google-cloud-cli-451.0.0-linux-x86.tar.gz;'
           }
           echo "Start deployment of deployment.yaml"
-          step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './terraforms/kubernetes/python-app-deployment.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+          step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes/python-app-deployment.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
 }
         }
       } 
