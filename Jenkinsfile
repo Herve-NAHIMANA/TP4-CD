@@ -9,7 +9,7 @@ pipeline {
           gcloud_path = "./google-cloud-sdk/bin/"
           GCP_CREDENTIALS = 'gcp'
           CLUSTER_NAME = 'jenkins-cluster'
-          LOCATION = 'europe-west1-c'
+          LOCATION = 'europe-west1'
           CREDENTIALS_ID = '7f60009d-27b9-405d-8e78-db4d9b093835'
           PROJECT_ID = "jenkins-cid"
         }
