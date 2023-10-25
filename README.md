@@ -86,11 +86,6 @@ Le dossier est constitué des dossiers et fichiers comme suit:
 
 Les étapes du pipeline sont décritées dans le Jenkinsfile qui est disponible sur le dépôt, jenkins l'utilise pour executer les tâches suivantes:
 
-1. Installe les paquets nécéssaire
-2. Pull l'image docker avec la commande `docker pull {image_docker}`
-3. Installation de gcloud-cli
-4. lancement du script de déploiement `deployment.sh`
-![](imgs/stageview.PNG)
-
->[!WARNING]
-Il faut se connecter manuellement dans le container jenkins et lance la commande `gcloud auth application-default login ` pour donner à jenkins l'accès sur google cloud.
+Pour le dev : `https://github.com/Herve-NAHIMANA/TP4-CD/tree/dev`
+Pour la Pre-prod: `https://github.com/Herve-NAHIMANA/TP4-CD/tree/test`
+Pour la Prod: `https://github.com/Herve-NAHIMANA/TP4-CD/tree/prod`
