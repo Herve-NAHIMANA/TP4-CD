@@ -95,6 +95,7 @@ Les étapes du pipeline sont décritées dans le Jenkinsfile qui est disponible 
 
 >[!WARNING]
 Il faut se connecter manuellement dans le container jenkins et lance la commande `gcloud auth application-default login ` pour donner à jenkins l'accès sur google cloud.
+
 Pour que le plugin googlekubernetesEngine et docker-scout fonctionnent, il faut parametre les variables d'environnements(DOCKER_ACCOUNT,CLUSTER_NAME,LOCATION,CREDENTIALS_ID,PROJECT_ID) dans le fichier Jenkinsfile.
 
 - DOCKER_ACCOUNT: correspond aux identifiants utilise pour se connecter sur docker hub
@@ -121,5 +122,9 @@ CREDENTIALS_ID:
 
 - `Administrateur jenkins > Credentials > System > Identifiants globaux (illimité) > Add Credientials`
 
-- Dans type, sélectionner Nom d'utilisateur et mot de passe
+- Dans type, sélectionner Google Service Account from private key
+
+- Renseigner le nom du project gcp
+
+- Télécharge le fichier json contenant la clé
 ![](imgs/credentials_id_settings.PNG)
