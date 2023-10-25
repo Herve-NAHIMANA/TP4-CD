@@ -87,11 +87,11 @@ Le dossier est constitué des dossiers et fichiers comme suit:
 
 9. il faut créer un pipeline, en cliquant sur Nouveau Item/New Item
 
-![](imgs/newItem.png)
+![](imgs/newItem.PNG)
 
 10. Saisissez le nom du job, et séléctionnez pipeline, puis cliquez sur ok
 
-![](imgs/nameItem.png)
+![](imgs/nameItem.PNG)
 
 11. Coche la case Github hook trigger for GITScm polling afin d'autoriser le déclenchement du job par les webhooks.
 
