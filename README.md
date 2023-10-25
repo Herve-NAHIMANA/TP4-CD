@@ -85,6 +85,26 @@ Le dossier est constitué des dossiers et fichiers comme suit:
 
 8. Pour le webhook, j'ai utilisé webhookrelay. Pour le télécharger, [Cliquer ici](https://docs.webhookrelay.com/installation-options/installation-options/install-cli)
 
+9. il faut créer un pipeline, en cliquant sur Nouveau Item/New Item
+
+![](imgs/newItem.PNG)
+
+10. Saisissez le nom du job, et séléctionnez pipeline, puis cliquez sur ok
+
+![](imgs/nameItem.PNG)
+
+11. Coche la case Github hook trigger for GITScm polling afin d'autoriser le déclenchement du job par les webhooks.
+
+![](imgs/Cochebuildtrigger.PNG)
+
+12. Dans pipeline definition, séléctionnez `Pipeline script from SCM`
+13. Dans SCM, séléctionnez `git`
+14. Dans Repositories, renseigner `l'URL du repo git`
+15. Dans branches to build, remplacez `master` par `test`
+16. Laisser le champ Script Path par défaut.
+
+![](imgs/pipelinetest.PNG)
+
 ### Présentation du pipeline
 
 Les étapes du pipeline sont décritées dans le Jenkinsfile qui est disponible sur le dépôt, jenkins l'utilise pour executer les tâches suivantes:
