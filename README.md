@@ -89,7 +89,8 @@ Les étapes du pipeline sont décritées dans le Jenkinsfile qui est disponible 
 1. Installe les paquets nécéssaire
 2. Pull l'image docker avec la commande `docker pull {image_docker}`
 3. Installation de gcloud-cli
-4. lancement du script de déploiement `deployment.sh`
+4. Analyse de l'image docker avec `docker-scout`
+4. Instalation de 
 ![](imgs/stageview.PNG)
 
 >[!WARNING]
