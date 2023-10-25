@@ -2,7 +2,7 @@
 
 ### Objectif
 
-Le TP consiste à mettre en oeuvre une chaîne de déploiement continue pour les applications python dans un environnement kubernetes sur Google Cloud Platform(GCP).
+Le TP consiste à mettre en oeuvre une chaîne de déploiement continue pour les applications python dans un environnement dev avec docker.
 
 ### Prérequis
 
@@ -99,36 +99,14 @@ Les étapes du pipeline sont décritées dans le Jenkinsfile qui est disponible 
 >[!WARNING]
 Il faut se connecter manuellement dans le container jenkins et lance la commande `gcloud auth application-default login ` pour donner à jenkins l'accès sur google cloud.
 
-- DOCKER_ACCOUNT: correspond aux identifiants utilise pour se connecter sur docker hub
+L' identifiant (DOCKER_ACCOUNT) étant secrets, il ne faut pas le rendre publique donc il faut le renseigner comme suit:
 
-- CLUSTER_NAME: Le nom du cluster kubernetes
-
-- LOCATION: La zone ou la region où se trouve le cluster kubernetes
-
-- CREDENTIALS_ID: Le fichier json contenant la clé du compte service qui a au minimum le droit `Container.services.develop` pour pouvoir deployer l'application dans le cluster`
-
-- PROJECT_ID: L'id du projet GCP
-
-Les identifiants (DOCKER_ACCOUNT et CREDENTIALS_ID) étant secrets, il ne faut pas les rendre publique donc il faut les renseigner comme suit:
-
-*DOCKER_ACCOUNT:*
+*DOCKER_ACCOUNT: correspond aux identifiants utilise pour se connecter sur docker hub*
 
 - `Administrateur jenkins > Credentials > System > Identifiants globaux (illimité) > Add Credientials`
 
 - Dans type, sélectionner Nom d'utilisateur et mot de passe
 
 ![](imgs/docker_account_credentials_settings.PNG)
-
-*CREDENTIALS_ID:*
-
-- `Administrateur jenkins > Credentials > System > Identifiants globaux (illimité) > Add Credientials`
-
-- Dans type, sélectionner Google Service Account from private key
-
-- Renseigner le nom du project gcp
-
-- Télécharge le fichier json contenant la clé.
-
-![](imgs/credentials_id_settings.PNG)
 
 Le rapport est accessible en selectionnant le numéro du build, clique sur workspace, suivre le lien `/var/jenkins_home/workspace/jenkins-integration`et ouvrir le fichier `report.json` . 

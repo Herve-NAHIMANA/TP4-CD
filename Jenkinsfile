@@ -6,7 +6,6 @@ pipeline {
     environment {
           DOCKER_ACCOUNT = credentials('docker')
           imagename = "hizzo/my-image-python"
-          gcloud_path = "./google-cloud-sdk/bin/"
           GCP_CREDENTIALS = 'gcp'
         }
       stages {
