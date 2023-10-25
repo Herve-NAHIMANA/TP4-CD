@@ -36,7 +36,7 @@ pipeline {
               sh 'echo $DOCKER_ACCOUNT_PSW | docker login -u $DOCKER_ACCOUNT_USR --password-stdin'
 
               // Analyze and fail on critical or high vulnerabilities
-              sh 'docker-scout cves --format sarif --output alpine.sarif.json $imagename'
+              sh 'docker-scout cves --format sarif --output report.json $imagename'
           }
       }
       stage('Deploiement Kubernetes'){
