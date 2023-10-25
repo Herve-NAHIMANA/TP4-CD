@@ -38,8 +38,10 @@ pipeline {
               // Analyze and fail on critical or high vulnerabilities
               sh 'docker-scout cves --format sarif --output report.json $imagename'
           }
-          steps{
-            cucumber buildStatus: 'UNSTABLE',
+      }
+      stage('Generate HTML report') {
+        steps{
+          cucumber buildStatus: 'UNSTABLE',
                     reportTitle: 'My report',
                     fileIncludePattern: '**/*.json',
                     trendsLimit: 10,
@@ -50,6 +52,7 @@ pipeline {
                         ]
                     ]
         }
+            
       }
       stage('Deploiement Kubernetes'){
         steps{
