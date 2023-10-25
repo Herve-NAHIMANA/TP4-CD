@@ -93,14 +93,11 @@ Les étapes du pipeline sont décritées dans le Jenkinsfile qui est disponible 
 2. Pull l'image docker avec la commande `docker pull {image_docker}`
 3. Installation de gcloud-cli
 4. Analyse de l'image docker avec `docker-scout`
-4. Deploiement de l'application sur GKE
+4. Deploiement de l'application sur une VM dans GCP
 ![](imgs/stageview.PNG)
 
 >[!WARNING]
 Il faut se connecter manuellement dans le container jenkins et lance la commande `gcloud auth application-default login ` pour donner à jenkins l'accès sur google cloud.
-
->[!WARNING]
-Pour que le plugin googlekubernetesEngine et docker-scout fonctionnent, il faut parametre les variables d'environnements(DOCKER_ACCOUNT,CLUSTER_NAME,LOCATION,CREDENTIALS_ID,PROJECT_ID) dans le fichier Jenkinsfile.
 
 - DOCKER_ACCOUNT: correspond aux identifiants utilise pour se connecter sur docker hub
 
@@ -134,4 +131,4 @@ Les identifiants (DOCKER_ACCOUNT et CREDENTIALS_ID) étant secrets, il ne faut p
 
 ![](imgs/credentials_id_settings.PNG)
 
-Le rapport est accessible en selectionnant le numéro du build, clique sur workspace, suivre le lien `/var/jenkins_home/workspace/jenkins-integration-prod`et ouvrir le fichier `report.json` . 
+Le rapport est accessible en selectionnant le numéro du build, clique sur workspace, suivre le lien `/var/jenkins_home/workspace/jenkins-integration`et ouvrir le fichier `report.json` . 
