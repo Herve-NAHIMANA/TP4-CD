@@ -43,7 +43,7 @@ pipeline {
         steps{
           cucumber buildStatus: 'UNSTABLE',
                     reportTitle: 'My report',
-                    fileIncludePattern: '**/*.json',
+                    fileIncludePattern: './report.json',
                     trendsLimit: 10,
                     classifications: [
                         [
