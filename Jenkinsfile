@@ -39,6 +39,18 @@ pipeline {
               sh 'docker-scout cves --format sarif --output report.json $imagename'
           }
       }
+          stage('Generate HTML report') {
+            cucumber buildStatus: 'UNSTABLE',
+                    reportTitle: 'My report',
+                    fileIncludePattern: '**/*.json',
+                    trendsLimit: 10,
+                    classifications: [
+                        [
+                            'key': 'Browser',
+                            'value': 'Firefox'
+                        ]
+                    ]
+        }
       stage('Deploiement Kubernetes'){
         steps{
           script{
