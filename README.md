@@ -86,8 +86,8 @@ Le dossier est constitué des dossiers et fichiers comme suit:
 
 Les étapes du pipeline sont décritées dans le Jenkinsfile qui est disponible sur le dépôt, jenkins l'utilise pour executer les tâches suivantes:
 
-Pour le dev : [Dev](`https://github.com/Herve-NAHIMANA/TP4-CD/tree/dev`)
+Pour le dev : [dev branch](https://github.com/Herve-NAHIMANA/TP4-CD/tree/dev)
 
-Pour la Pre-prod: [Pre-prod](`https://github.com/Herve-NAHIMANA/TP4-CD/tree/test`)
+Pour la Pre-prod: [test branch](https://github.com/Herve-NAHIMANA/TP4-CD/tree/test)
 
-Pour la Prod: [Prod](`https://github.com/Herve-NAHIMANA/TP4-CD/tree/prod`)
+Pour la Prod: [prod branch](https://github.com/Herve-NAHIMANA/TP4-CD/tree/prod)
