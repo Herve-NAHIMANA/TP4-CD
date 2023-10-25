@@ -130,3 +130,5 @@ Les identifiants (DOCKER_ACCOUNT et CREDENTIALS_ID) étant secrets, il ne faut p
 - Télécharge le fichier json contenant la clé.
 
 ![](imgs/credentials_id_settings.PNG)
+
+Le rapport est accessible en selectionnant le numéro d'un build, clique sur workspace, suivre le lien `/var/jenkins_home/workspace/jenkins-integration-prod`et ouvrir le fichier `report.json` . 
