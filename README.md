@@ -2,14 +2,17 @@
 
 ### Objectif
 
-Le TP consiste à mettre en oeuvre une chaîne de déploiement continue pour les applications python.
+Le TP consiste à mettre en oeuvre une chaîne de déploiement continue pour les applications python dans un environnement kubernetes sur Google Cloud Platform(GCP).
 
 ### Prérequis
 
  - un compte Github
  - un compte docker hub
  - Lance le script sur linux et avoir docker installer dessus
+ - Compte de service
+ - Cluster kubernetes gcp
 
+Si vous envisagez deploy l'application en déhors de GCP, il faut adapter le code au provider utilisé.
  ### Composition du dépot
 
 Le dossier est constitué des dossiers et fichiers comme suit:
