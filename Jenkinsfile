@@ -6,14 +6,10 @@ pipeline {
     environment {
           DOCKER_ACCOUNT = credentials('docker')
           imagename = "hizzo/my-image-python"
-          gcloud_path = "./google-cloud-sdk/bin/"
-          GCP_CREDENTIALS = 'gcp'
           CLUSTER_NAME = 'jenkins-cluster'
           LOCATION = 'europe-west9'
           CREDENTIALS_ID ='cf8fd106-486a-4618-bb4e-be636310588d'
           PROJECT_ID = "jenkins-cid"
-          SERVICE_ACCOUNT = credentials('service_account')
-          json_file= credentials('secret_json')
         }
       stages {
         stage('Prerequis') { // Compile and do unit testing
@@ -42,12 +38,6 @@ pipeline {
           }
       }
       stage('Deploiement Kubernetes'){
-        steps{
-          script{
-              sh 'if [ ! command  -v ./google-cloud-sdk/bin/gcloud &> /dev/null]; then curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-451.0.0-linux-x86.tar.gz;fi'
-              sh 'tar -xf google-cloud-cli-451.0.0-linux-x86.tar.gz;'
-              //sh './google-cloud-sdk/bin/gcloud auth activate-service-account $SERVICE_ACCOUNT --key-file=$json_file --project=$PROJECT_ID'
-          }
           echo "Start deployment of deployment.yaml"
           step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes/python-app-deployment.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
 }
