@@ -10,9 +10,9 @@ pipeline {
           GCP_CREDENTIALS = 'gcp'
           CLUSTER_NAME = 'jenkins-cluster'
           LOCATION = 'europe-west9'
-          CREDENTIALS_ID = 'secret_json'
+          CREDENTIALS_ID = credentials('secret_json')
           PROJECT_ID = "jenkins-cid"
-          SERVICE_ACCOUNT = "service_account"
+          SERVICE_ACCOUNT = credentials('service_account')
         }
       stages {
         stage('Prerequis') { // Compile and do unit testing
