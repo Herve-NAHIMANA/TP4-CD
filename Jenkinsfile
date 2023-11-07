@@ -8,7 +8,7 @@ pipeline {
           imagename = "hizzo/my-image-python"
           CLUSTER_NAME = 'jenkins-cluster'
           LOCATION = 'europe-west9'
-          CREDENTIALS_ID ='cf8fd106-486a-4618-bb4e-be636310588d'
+          CREDENTIALS_ID ='c820aed5-dde9-4bee-bf21-95c753fca151'
           PROJECT_ID = "jenkins-cid"
         }
       stages {
