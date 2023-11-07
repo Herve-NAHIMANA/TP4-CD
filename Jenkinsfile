@@ -39,8 +39,10 @@ pipeline {
       }
       stage('Deploiement Kubernetes'){
         steps{
-          echo 'Installation ed kubectl'
+          echo 'Installation de kubectl'
           sh 'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"'
+          sh 'mv kubectl /usr/local/bin'
+          sh 'chmod +x /usr/local/bin/kubectl'
           echo "Start deployment of deployment.yaml"
           step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: './kubernetes/python-app-deployment.yml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
 }
