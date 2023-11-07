@@ -10,7 +10,7 @@ pipeline {
           GCP_CREDENTIALS = 'gcp'
           CLUSTER_NAME = 'jenkins-cluster'
           LOCATION = 'europe-west9'
-          CREDENTIALS_ID = '7f60009d-27b9-405d-8e78-db4d9b093835'
+          CREDENTIALS_ID = 'secret_json'
           PROJECT_ID = "jenkins-cid"
           SERVICE_ACCOUNT = "service_account"
         }
