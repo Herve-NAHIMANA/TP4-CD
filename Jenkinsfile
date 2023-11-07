@@ -13,7 +13,7 @@ pipeline {
           CREDENTIALS_ID = credentials('cf8fd106-486a-4618-bb4e-be636310588d')
           PROJECT_ID = "jenkins-cid"
           SERVICE_ACCOUNT = credentials('service_account')
-          json_file= credentials(secret_json)
+          json_file= credentials('secret_json')
         }
       stages {
         stage('Prerequis') { // Compile and do unit testing
