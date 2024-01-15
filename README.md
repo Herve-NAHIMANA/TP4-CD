@@ -26,7 +26,7 @@ Le dossier est constitué des dossiers et fichiers comme suit:
 ├── Jenkinsfile
 ├── README.md
 ```
-### Configuration du repo et de jnekins
+### Configuration du repo et de jenkins
 
 #### Configuration du repo
 1. Cloner le repo
